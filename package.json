@@ -1,0 +1,42 @@
+{
+  "name": "stroli_app_start",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start"
+  },
+  "dependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/typography": "^0.5.13",
+    "@tanstack/react-form": "^0.28.0",
+    "@tanstack/react-router": "^1.46.7",
+    "@tanstack/router-plugin": "^1.46.6",
+    "@tanstack/start": "^1.46.7",
+    "@vitejs/plugin-react": "^4.3.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.21",
+    "lenis": "^1.1.9",
+    "motion": "^10.18.0",
+    "react": "^19.0.0-rc-187dd6a7-20240806",
+    "react-dom": "^19.0.0-rc-187dd6a7-20240806",
+    "react-icons": "^5.2.1",
+    "redaxios": "^0.5.1",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.5.4",
+    "vinxi": "^0.4.1"
+  },
+  "devDependencies": {
+    "@million/lint": "^1.0.0-rc.84",
+    "@types/bun": "latest",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.7",
+    "unplugin-fonts": "^1.1.1"
+  }
+}
