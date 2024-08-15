@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { inView, animate, type AnimationOptions, type Easing } from "motion";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +22,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   animationEasing = [0.17, 0.55, 0.55, 1],
 }) => {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const spanRef = useRef<HTMLSpanElement | null>(null);
+  const spanRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (sectionRef.current && spanRef.current) {
@@ -39,7 +39,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
             animate(
               spanRef.current!,
               { opacity: 1, transform: "none" },
-              animationOptions,
+              animationOptions
             );
           } else {
             // Optional: reset the animation when out of view
@@ -52,7 +52,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
         {
           margin: rootMargin,
           amount: threshold,
-        },
+        }
       );
 
       // Clean up the observer when the component unmounts
@@ -71,16 +71,9 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       ref={sectionRef}
       className={cn("flex p-1 overflow-x-clip", className)}
     >
-      <span
-        ref={spanRef}
-        style={{
-          display: "block",
-          opacity: 0,
-          transform: "translateX(-100px)",
-        }}
-      >
+      <div ref={spanRef} className="block, opacity-0 translate-x-[-100px]">
         {children}
-      </span>
+      </div>
     </section>
   );
 };

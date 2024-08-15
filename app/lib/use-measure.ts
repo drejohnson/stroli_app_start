@@ -1,5 +1,4 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import type { RefObject } from "react";
 
 interface ElementSize {
   width: number;
@@ -7,7 +6,7 @@ interface ElementSize {
 }
 
 function useMeasure<T extends HTMLElement = HTMLDivElement>(): [
-  RefObject<T>,
+  React.RefObject<T>,
   ElementSize,
 ] {
   const ref = useRef<T>(null);
