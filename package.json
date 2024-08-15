@@ -8,6 +8,7 @@
     "start": "vinxi start"
   },
   "dependencies": {
+    "@fontsource-variable/outfit": "^5.0.13",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.13",
     "@tanstack/react-form": "^0.28.0",
@@ -30,6 +31,7 @@
     "vinxi": "^0.4.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.8.3",
     "@million/lint": "^1.0.0-rc.84",
     "@types/bun": "latest",
     "@types/react": "^18.3.3",

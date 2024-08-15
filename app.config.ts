@@ -6,21 +6,34 @@ import type { Plugin } from "vinxi";
 
 export default defineConfig({
   vite: {
-    plugins: (...args) => [
+    plugins: () => [
       tsConfigPaths({
         projects: ["./tsconfig.json"],
       }),
+      unfonts({
+        fontsource: {
+          families: ["Outfit Variable"],
+        },
+      }) as Plugin,
       // MillionLint.vite({
       //   rsc: true,
       //   filter: {
       //     include: "./app/**/*.{mtsx,mjsx,tsx,jsx}",
       //   },
       // }),
-      unfonts({
-        google: {
-          families: ["Outfit", "Montserrat"],
-        },
-      }) as Plugin,
     ],
+  },
+  routers: {
+    client: {
+      vite: {
+        plugins: () => [
+          // unfonts({
+          //   google: {
+          //     families: ["Outfit", "Montserrat"],
+          //   },
+          // }) as Plugin,
+        ],
+      },
+    },
   },
 });

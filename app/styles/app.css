@@ -64,7 +64,7 @@
     @apply scroll-smooth;
   }
   body {
-    --font-outfit: "Outfit";
+    --font-outfit: "Outfit Variable";
     --font-montserrat: "Montserrat";
     @apply relative min-h-screen min-h-dvh antialiased;
   }
