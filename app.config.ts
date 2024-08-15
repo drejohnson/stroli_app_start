@@ -6,7 +6,7 @@ import type { Plugin } from "vinxi";
 
 export default defineConfig({
   vite: {
-    plugins: () => [
+    plugins: (...args) => [
       tsConfigPaths({
         projects: ["./tsconfig.json"],
       }),
@@ -23,17 +23,14 @@ export default defineConfig({
       // }),
     ],
   },
-  routers: {
-    client: {
-      vite: {
-        plugins: () => [
-          // unfonts({
-          //   google: {
-          //     families: ["Outfit", "Montserrat"],
-          //   },
-          // }) as Plugin,
+  react: {
+    babel: {
+      plugins: [
+        [
+          "babel-plugin-react-compiler",
+          { runtimeModule: "react-compiler-runtime" },
         ],
-      },
+      ],
     },
   },
 });
