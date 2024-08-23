@@ -7,6 +7,7 @@ interface VideoBackgroundProps {
   fallbackImage?: string;
   playbackRate?: number;
   inViewOptions?: Partial<InViewOptions>;
+  className?: string;
   children?: React.ReactNode;
 }
 
@@ -20,10 +21,11 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
   fallbackImage,
   playbackRate = 1,
   inViewOptions = {},
+  className = "",
   children,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [containerRef, containerSize] = useMeasure<HTMLDivElement>();
+  const [containerRef, _containerSize] = useMeasure<HTMLDivElement>();
 
   const handleVisibilityChange = useCallback((isIntersecting: boolean) => {
     const video = videoRef.current;
@@ -68,19 +70,28 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
   }, [playbackRate]);
 
   return (
-    <div ref={containerRef} className="relative w-full h-full overflow-hidden">
+    <div
+      ref={containerRef}
+      className="relative flex items-center justify-center w-full h-full"
+    >
       <video
         ref={videoRef}
         className="absolute inset-0 size-full object-cover"
         loop
         muted
         playsInline
+        controls={false}
         poster={fallbackImage}
       >
         <source src={src} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      {children && <div className="relative z-10">{children}</div>}
+      <div className="absolute inset-0 size-full bg-gradient-to-r from-sky-300 md:via-rose-200 to-green-200 bg-opacity-80 mix-blend-multiply pointer-events-none"></div>
+      {children && (
+        <div className="relative flex flex-col self-end md:justify-around h-[70vh] gap-8 w-[90vw] z-10">
+          {children}
+        </div>
+      )}
     </div>
   );
 };

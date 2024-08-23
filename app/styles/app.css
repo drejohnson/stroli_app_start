@@ -61,7 +61,7 @@
     @apply border-border;
   }
   html {
-    @apply scroll-smooth;
+    @apply overflow-y-scroll snap-y snap-mandatory scroll-smooth;
   }
   body {
     --font-outfit: "Outfit Variable";

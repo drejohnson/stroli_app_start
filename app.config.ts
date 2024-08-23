@@ -23,7 +23,7 @@ export default defineConfig({
       // }),
     ],
   },
-  react: {
+  /* react: {
     babel: {
       plugins: [
         [
@@ -32,5 +32,5 @@ export default defineConfig({
         ],
       ],
     },
-  },
+  }, */
 });

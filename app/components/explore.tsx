@@ -22,10 +22,10 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   animationEasing = [0.17, 0.55, 0.55, 1],
 }) => {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const spanRef = useRef<HTMLDivElement | null>(null);
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
 
   useEffect(() => {
-    if (sectionRef.current && spanRef.current) {
+    if (sectionRef.current && headingRef.current) {
       const animationOptions: AnimationOptions = {
         delay: animationDelay,
         duration: animationDuration,
@@ -37,13 +37,13 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
         (entry) => {
           if (entry.isIntersecting) {
             animate(
-              spanRef.current!,
+              headingRef.current!,
               { opacity: 1, transform: "none" },
               animationOptions
             );
           } else {
             // Optional: reset the animation when out of view
-            animate(spanRef.current!, {
+            animate(headingRef.current!, {
               opacity: 0,
               transform: "translateX(-100px)",
             });
@@ -71,9 +71,9 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       ref={sectionRef}
       className={cn("flex p-1 overflow-x-clip", className)}
     >
-      <div ref={spanRef} className="block, opacity-0 translate-x-[-100px]">
+      <h2 ref={headingRef} className="opacity-0 translate-x-[-100px]">
         {children}
-      </div>
+      </h2>
     </section>
   );
 };

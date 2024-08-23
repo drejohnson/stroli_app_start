@@ -24,6 +24,7 @@ export const Route = createRootRoute({
     }),
   ],
   links: () => [
+    { rel: "preload", href: appCss, as: "style" },
     { rel: "stylesheet", href: appCss },
     {
       rel: "apple-touch-icon",
@@ -74,7 +75,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Meta />
       </Head>
       <Body>
-        {children}
+        <div className="grid grid-rows-[auto_1fr]">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </Body>
