@@ -9,8 +9,8 @@ export const Route = createFileRoute("/_layout")({
 
 function LayoutComponent() {
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] row-start-2 items-center justify-items-center min-h-screen">
-      <Header className="bg-transparent backdrop-blur-sm w-full h-fit py-2">
+    <div className="relative grid grid-rows-[auto_1fr_auto] row-start-2 items-center justify-items-center min-h-screen">
+      <Header className="bg-transparent backdrop-blur-sm h-fit py-2">
         <Nav />
       </Header>
       <div className="grid items-center justify-items-center w-full min-h-screen">

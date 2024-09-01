@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useCallback } from "react";
 import { animate, scroll, spring, type ScrollInfo } from "motion";
 
 import { cn } from "@/lib/utils";
+import { Nav } from "./nav";
 
 interface HeaderProps {
   children: React.ReactNode;
@@ -68,16 +69,14 @@ export const Header: React.FC<HeaderProps> = ({
   }, [threshold, animateHeader]);
 
   return (
-    <>
-      <header
-        ref={headerRef}
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 will-change-transform",
-          className
-        )}
-      >
-        {children}
-      </header>
-    </>
+    <header
+      ref={headerRef}
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 will-change-transform",
+        className
+      )}
+    >
+      {children}
+    </header>
   );
 };

@@ -32,15 +32,19 @@ export function useInView<T extends HTMLElement>({
       (entry) => {
         if (entry.isIntersecting) {
           animate(
-            ref.current!,
+            entry.target,
             { opacity: 1, transform: "none" },
             animationOptions
           );
         } else {
-          animate(ref.current!, {
-            opacity: 0,
-            transform: "translateX(-100px)",
-          });
+          animate(
+            entry.target,
+            {
+              opacity: 0,
+              transform: "translateX(-100px)",
+            },
+            animationOptions
+          );
         }
       },
       { margin: rootMargin, amount: threshold }

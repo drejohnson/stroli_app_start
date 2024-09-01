@@ -13,6 +13,8 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
+import { Route as LayoutOnboardingCreatorImport } from './routes/_layout/onboarding/creator'
+import { Route as LayoutAuthSignInImport } from './routes/_layout/auth/sign-in'
 
 // Create/Update Routes
 
@@ -23,6 +25,16 @@ const LayoutRoute = LayoutImport.update({
 
 const LayoutIndexRoute = LayoutIndexImport.update({
   path: '/',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutOnboardingCreatorRoute = LayoutOnboardingCreatorImport.update({
+  path: '/onboarding/creator',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutAuthSignInRoute = LayoutAuthSignInImport.update({
+  path: '/auth/sign-in',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -44,13 +56,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LayoutIndexImport
       parentRoute: typeof LayoutImport
     }
+    '/_layout/auth/sign-in': {
+      id: '/_layout/auth/sign-in'
+      path: '/auth/sign-in'
+      fullPath: '/auth/sign-in'
+      preLoaderRoute: typeof LayoutAuthSignInImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/onboarding/creator': {
+      id: '/_layout/onboarding/creator'
+      path: '/onboarding/creator'
+      fullPath: '/onboarding/creator'
+      preLoaderRoute: typeof LayoutOnboardingCreatorImport
+      parentRoute: typeof LayoutImport
+    }
   }
 }
 
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren({
-  LayoutRoute: LayoutRoute.addChildren({ LayoutIndexRoute }),
+  LayoutRoute: LayoutRoute.addChildren({
+    LayoutIndexRoute,
+    LayoutAuthSignInRoute,
+    LayoutOnboardingCreatorRoute,
+  }),
 })
 
 /* prettier-ignore-end */
@@ -67,11 +97,21 @@ export const routeTree = rootRoute.addChildren({
     "/_layout": {
       "filePath": "_layout.tsx",
       "children": [
-        "/_layout/"
+        "/_layout/",
+        "/_layout/auth/sign-in",
+        "/_layout/onboarding/creator"
       ]
     },
     "/_layout/": {
       "filePath": "_layout/index.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/auth/sign-in": {
+      "filePath": "_layout/auth/sign-in.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/onboarding/creator": {
+      "filePath": "_layout/onboarding/creator.tsx",
       "parent": "/_layout"
     }
   }

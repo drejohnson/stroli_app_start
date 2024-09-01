@@ -1,86 +1,67 @@
 import React, { useRef, useEffect } from 'react';
 import { scroll, animate, type ScrollOptions } from 'motion';
 import { cn } from "@/lib/utils";
+import type { Step } from '@/types';
 
 interface ParallaxGridScrollProps {
-  items: string[];
+  items: Step[];
   className?: string;
 }
 
-const ParallaxGridScroll: React.FC<ParallaxGridScrollProps> = ({ items, className }) => {
+export const ParallaxGridScroll: React.FC<ParallaxGridScrollProps> = ({ items, className }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const leftColumnRef = useRef<HTMLDivElement>(null);
-  const middleColumnRef = useRef<HTMLDivElement>(null);
-  const rightColumnRef = useRef<HTMLDivElement>(null);
+  const itemRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)];
 
   useEffect(() => {
-    if (!gridRef.current || !leftColumnRef.current || !middleColumnRef.current || !rightColumnRef.current) return;
+    if (!gridRef.current || itemRefs.some(ref => !ref.current)) return;
 
     const scrollOptions: ScrollOptions = {
       target: gridRef.current,
       offset: ['start end', 'end start']
     };
 
-    const leftColumnAnimation = scroll(
-      animate(leftColumnRef.current, { y: [0, -50] }),
-      scrollOptions
-    );
-
-    const middleColumnAnimation = scroll(
-      animate(middleColumnRef.current, { y: [-50, 50] }),
-      scrollOptions
-    );
-
-    const rightColumnAnimation = scroll(
-      animate(rightColumnRef.current, { y: [0, -50] }),
-      scrollOptions
+    const animations = itemRefs.map((ref, index) =>
+      scroll(
+        animate(ref.current!, { y: items[index].yTransform }),
+        scrollOptions
+      )
     );
 
     return () => {
-      leftColumnAnimation();
-      middleColumnAnimation()
-      rightColumnAnimation();
+      animations.forEach(animation => animation());
     };
-  }, []);
-
-  const third = Math.ceil(items.length / 3);
-  const leftItems = items.slice(0, third);
-  const middleItems = items.slice(third, 2 * third);
-  const rightItems = items.slice(2 * third);
+  }, [items]);
 
   return (
-    <div ref={containerRef} className={cn("h-[40rem] overflow-hidden w-full", className)}>
+    <div ref={containerRef} className={cn("h-full overflow-hidden w-full", className)}>
       <div
         ref={gridRef}
-        className="h-full overflow-y-scroll pr-[17px] mr-[-17px]"
+        className="h-full"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start max-w-5xl mx-auto gap-10 py-40 px-10">
-          <div className="grid gap-10" ref={leftColumnRef}>
-            {leftItems.map((item, idx) => (
-              <div key={`left-${idx}`} className="bg-blue-100 p-4 rounded-lg aspect-[9/16] flex items-center justify-center">
-                {item}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-start max-w-5xl mx-auto gap-10 md:gap-24 py-10 px-10">
+          {items.map((item, idx) => (
+            <div
+              key={idx}
+              ref={itemRefs[idx]}
+              className="flex flex-col items-center text-center"
+            >
+              <div className={cn("mb-4", idx === 1 ? "order-1 md:order-2" : "")}>
+                <h2 className="text-2xl font-semibold">{item.title}</h2>
+                <p className="text-balance">{item.description}</p>
               </div>
-            ))}
-          </div>
-          <div className="grid gap-10" ref={middleColumnRef}>
-            {middleItems.map((item, idx) => (
-              <div key={`middle-${idx}`} className="bg-green-100 p-4 rounded-lg aspect-[9/16] flex items-center justify-center">
-                {item}
+              <div
+                className={cn(
+                  "max-w-[80vw] md:max-w-[25vw]",
+                  idx === 1 ? "order-2 md:order-1" : ""
+                )}
+              >
+                <img src={item.image} alt={item.alt} className="w-full h-auto mb-4 rounded object-cover" />
               </div>
-            ))}
-          </div>
-          <div className="grid gap-10" ref={rightColumnRef}>
-            {rightItems.map((item, idx) => (
-              <div key={`right-${idx}`} className="bg-red-100 p-4 rounded-lg aspect-[9/16] flex items-center justify-center">
-                {item}
-              </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 };
-
-export default ParallaxGridScroll;

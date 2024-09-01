@@ -1,4 +1,8 @@
-import React, { useCallback, useRef, useState, useMemo, useEffect } from "react";
+import {
+  useRef,
+  useMemo,
+  useEffect,
+} from "react";
 import { animate } from "motion";
 import { AnimatedCard } from "@/components/animated-cards";
 import useMeasure from "@/lib/use-measure";
@@ -58,7 +62,7 @@ export const Explore = () => {
       { transform: [`translateX(0px)`, `translateX(-${scrollWidth / 2}px)`] },
       {
         duration: 30,
-        easing: 'linear',
+        easing: "linear",
         repeat: Infinity,
       }
     );
@@ -70,7 +74,7 @@ export const Explore = () => {
     <section
       ref={ref}
       id="explore"
-      className="relative min-h-screen snap-start snap-always py-24 overflow-hidden"
+      className="relative min-h-screen snap-start snap-always py-24 overflow-clip"
     >
       <h3
         ref={headingRef}
@@ -88,7 +92,10 @@ export const Explore = () => {
       <div className="container mx-auto px-4 overflow-hidden">
         <div ref={containerRef} className="flex">
           {doubledShows.map((show, idx) => (
-            <div key={idx} className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 sm:px-3">
+            <div
+              key={idx}
+              className="flex-shrink-0 w-2/3 md:w-1/5 px-2 sm:px-3"
+            >
               <AnimatedCard show={show} width={width} />
             </div>
           ))}
