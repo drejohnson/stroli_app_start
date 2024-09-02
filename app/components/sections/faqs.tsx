@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useInView } from "@/lib/use-inview";
+import { useInView } from "@/hooks/use-inview";
 
 type AnswerPart = {
   type: "text" | "link";

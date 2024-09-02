@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useInView } from "@/lib/use-inview";
+import { useInView } from "@/hooks/use-inview";
 import GradientBlob from "../gradient-blob";
 
 const ImageContainer = React.memo(({ src, alt, width, height, className }: {

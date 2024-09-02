@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 
 import { animate, inView, scroll } from "motion";
-import { useInView } from "@/lib/use-inview";
+import { useInView } from "@/hooks/use-inview";
 import { Link } from "@tanstack/react-router";
 
 export const Cta = () => {

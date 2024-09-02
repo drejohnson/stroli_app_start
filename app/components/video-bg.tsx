@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 interface VideoBackgroundProps {
@@ -11,24 +11,6 @@ export const VideoBackground: React.FC<VideoBackgroundProps> = ({
   poster,
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  /* useEffect(() => {
-    const videoElement = videoRef.current;
-    const preloadVideo = () => {
-      if (videoElement) {
-        videoElement.preload = "auto";
-      }
-    };
-
-    preloadVideo();
-
-    return () => {
-      if (videoElement) {
-        videoElement.src = "";
-        videoElement.load();
-      }
-    };
-  }, [videoSrc]); */
 
   return (
     <div

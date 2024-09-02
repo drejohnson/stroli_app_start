@@ -4,7 +4,7 @@ import VideoBackground from "@/components/video-bg";
 import { AnimatedTextLoop } from "@/components/animated-text";
 import { ScrollToButton } from "@/components/scroll-to-button";
 import { scroll, animate } from "motion";
-import { useInView } from "@/lib/use-inview";
+import { useInView } from "@/hooks/use-inview";
 
 export const Intro: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);

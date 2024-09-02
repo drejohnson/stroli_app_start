@@ -1,5 +1,5 @@
-import useMeasure from "@/lib/use-measure";
-import { useInView } from "@/lib/use-inview";
+import useMeasure from "@/hooks/use-measure";
+import { useInView } from "@/hooks/use-inview";
 import GradientBlob from "../gradient-blob";
 import { ParallaxGridScroll } from "../parallax-grid";
 import type { Step } from "@/types";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import type { Show } from "@/types";
 import { Link } from "@tanstack/react-router";
-import { useInView } from "@/lib/use-inview";
+import { useInView } from "@/hooks/use-inview";
 
 interface CardProps {
   width: number;

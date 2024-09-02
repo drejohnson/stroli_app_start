@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { animate, inView, scroll } from "motion";
-import { useInView } from "@/lib/use-inview";
+import { useInView } from "@/hooks/use-inview";
 
 export const Info = () => {
   const containerRef = useRef<HTMLDivElement>(null);

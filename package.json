@@ -18,10 +18,10 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.13",
-    "@tanstack/react-form": "0.29.0",
-    "@tanstack/react-router": "^1.46.7",
-    "@tanstack/router-plugin": "^1.46.6",
-    "@tanstack/start": "^1.46.7",
+    "@tanstack/react-form": "0.31.0",
+    "@tanstack/react-router": "1.52.3",
+    "@tanstack/router-plugin": "1.52.0",
+    "@tanstack/start": "1.52.3",
     "@vitejs/plugin-react": "^4.3.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -29,7 +29,7 @@
     "framer-motion": "^11.3.21",
     "input-otp": "^1.2.4",
     "lenis": "^1.1.9",
-    "lucide-react": "^0.428.0",
+    "lucide-react": "0.438.0",
     "motion": "^10.18.0",
     "react-day-picker": "8.10.1",
     "react-icons": "^5.2.1",
@@ -37,7 +37,7 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.5.4",
-    "vinxi": "^0.4.1"
+    "vinxi": "0.4.2"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",

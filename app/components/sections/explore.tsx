@@ -5,8 +5,8 @@ import {
 } from "react";
 import { animate } from "motion";
 import { AnimatedCard } from "@/components/animated-cards";
-import useMeasure from "@/lib/use-measure";
-import { useInView } from "@/lib/use-inview";
+import useMeasure from "@/hooks/use-measure";
+import { useInView } from "@/hooks/use-inview";
 import type { Show } from "@/types";
 import GradientBlob from "../gradient-blob";
 
@@ -55,7 +55,6 @@ export const Explore = () => {
     if (!container) return;
 
     const scrollWidth = container.scrollWidth;
-    const viewportWidth = container.offsetWidth;
 
     const animation = animate(
       container,
