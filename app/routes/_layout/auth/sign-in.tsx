@@ -210,7 +210,7 @@ function SignIn() {
               <p className=" text-gray-950">
                 Interested in becoming a creator?{" "}
                 <Link
-                  href="/onboarding/creator"
+                  to="/onboarding/creator"
                   className="inline-flex items-center text-cyan-500"
                 >
                   Apply <ChevronRight />

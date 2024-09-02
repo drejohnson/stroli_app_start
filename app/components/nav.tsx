@@ -21,13 +21,13 @@ export const Nav: React.FC = () => {
       <Logo />
       <div className="hidden md:flex items-center justify-between gap-5">
         <Link
-          href="/auth/sign-in"
+          to="/auth/sign-in"
           className="rounded-full bg-transparent border-2 border-gray-50 text-gray-50 text-center w-fit py-3 px-4 md:py-2 md:px-6 transition-all duration-300 no-underline"
         >
           Sign in
         </Link>
         <Link
-          href="/onboarding/creator"
+          to="/onboarding/creator"
           className="rounded-full bg-gray-50 text-gray-950 text-center w-fit py-3 px-4 md:py-2 md:px-6 transition-all duration-300 no-underline"
         >
           Become Creator
@@ -49,7 +49,7 @@ export const Nav: React.FC = () => {
           {navLinks.map(link => (
             <Link
               key={link.href}
-              href={link.href}
+              to={link.href}
               className="text-gray-50 text-2xl font-extrabold uppercase no-underline mb-6 hover:text-gray-200 transition-all duration-300"
               onClick={() => setIsMenuOpen(false)}
             >

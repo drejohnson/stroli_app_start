@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export const Logo = () => {
   return (
-    <Link href="/" className="relative flex items-center justify-center">
+    <Link to="/" className="relative flex items-center justify-center">
       <span className="relative w-12">
         <img
           src="/stroli_logo_icon.svg"

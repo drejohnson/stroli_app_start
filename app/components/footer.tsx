@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="relative flex-col justify-center gap-4 w-full snap-start snap-always">
       <div className="flex flex-col md:flex-row container justify-between">
-        <Link href="/" className="flex items-center justify-center py-4">
+        <Link to="/" className="flex items-center justify-center py-4">
           <span className="relative flex items-center justify-center">
             <img
               src="/stroli_logo_icon.svg"
@@ -18,21 +18,21 @@ const Footer = () => {
         </Link>
         <nav className="flex md:gap-4 items-center justify-center text-sm font-extrabold text-gray-950 uppercase py-6">
           <Link
-            href="/privacy-policy"
+            to="/privacy-policy"
             target="_blank"
             className="no-underline hover:underline"
           >
             Privacy Policy
           </Link>
           <Link
-            href="/legal"
+            to="/legal"
             target="_blank"
             className="no-underline hover:underline"
           >
             General Terms of Service
           </Link>
           <Link
-            href="/content-guidelines"
+            to="/content-guidelines"
             target="_blank"
             className="no-underline hover:underline"
           >

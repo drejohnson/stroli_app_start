@@ -13,6 +13,9 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as LayoutImport } from './routes/_layout'
 import { Route as LayoutIndexImport } from './routes/_layout/index'
+import { Route as LayoutPrivacyPolicyImport } from './routes/_layout/privacy-policy'
+import { Route as LayoutLegalImport } from './routes/_layout/legal'
+import { Route as LayoutContentGuidelinesImport } from './routes/_layout/content-guidelines'
 import { Route as LayoutOnboardingCreatorImport } from './routes/_layout/onboarding/creator'
 import { Route as LayoutAuthSignInImport } from './routes/_layout/auth/sign-in'
 
@@ -25,6 +28,21 @@ const LayoutRoute = LayoutImport.update({
 
 const LayoutIndexRoute = LayoutIndexImport.update({
   path: '/',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutPrivacyPolicyRoute = LayoutPrivacyPolicyImport.update({
+  path: '/privacy-policy',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutLegalRoute = LayoutLegalImport.update({
+  path: '/legal',
+  getParentRoute: () => LayoutRoute,
+} as any)
+
+const LayoutContentGuidelinesRoute = LayoutContentGuidelinesImport.update({
+  path: '/content-guidelines',
   getParentRoute: () => LayoutRoute,
 } as any)
 
@@ -48,6 +66,27 @@ declare module '@tanstack/react-router' {
       fullPath: ''
       preLoaderRoute: typeof LayoutImport
       parentRoute: typeof rootRoute
+    }
+    '/_layout/content-guidelines': {
+      id: '/_layout/content-guidelines'
+      path: '/content-guidelines'
+      fullPath: '/content-guidelines'
+      preLoaderRoute: typeof LayoutContentGuidelinesImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/legal': {
+      id: '/_layout/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LayoutLegalImport
+      parentRoute: typeof LayoutImport
+    }
+    '/_layout/privacy-policy': {
+      id: '/_layout/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof LayoutPrivacyPolicyImport
+      parentRoute: typeof LayoutImport
     }
     '/_layout/': {
       id: '/_layout/'
@@ -77,6 +116,9 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   LayoutRoute: LayoutRoute.addChildren({
+    LayoutContentGuidelinesRoute,
+    LayoutLegalRoute,
+    LayoutPrivacyPolicyRoute,
     LayoutIndexRoute,
     LayoutAuthSignInRoute,
     LayoutOnboardingCreatorRoute,
@@ -97,10 +139,25 @@ export const routeTree = rootRoute.addChildren({
     "/_layout": {
       "filePath": "_layout.tsx",
       "children": [
+        "/_layout/content-guidelines",
+        "/_layout/legal",
+        "/_layout/privacy-policy",
         "/_layout/",
         "/_layout/auth/sign-in",
         "/_layout/onboarding/creator"
       ]
+    },
+    "/_layout/content-guidelines": {
+      "filePath": "_layout/content-guidelines.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/legal": {
+      "filePath": "_layout/legal.tsx",
+      "parent": "/_layout"
+    },
+    "/_layout/privacy-policy": {
+      "filePath": "_layout/privacy-policy.tsx",
+      "parent": "/_layout"
     },
     "/_layout/": {
       "filePath": "_layout/index.tsx",
