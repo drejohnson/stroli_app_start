@@ -10,10 +10,14 @@
 
 # production
 /build
+/api/
+/server/build
+/public/build
 /storybook-static
 
 # misc
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
@@ -27,7 +31,8 @@ yarn-error.log*
 .vscode
 
 # generated
-/.million
-/.vinxi
-/.vercel
-/.output
+.million
+.vinxi
+.vercel
+.output
+.vercel
